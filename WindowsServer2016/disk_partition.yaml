@@ -12,12 +12,17 @@
   gather_facts: no
   tags: present
 
+  vars:
+    raw_disk: no
+    
   tasks:
-    - name: Get Disk info
-      win_shell: get-disk | select-object Number,PartitionStyle
-      register: disks
 
-#New-Partition -DiskNumber 1 -Size 5gb -AssignDriveLetter 
+    - name: Get Disk info
+      win_shell: Get-Disk | Where-Object PartitionStyle -eq 'raw' | Initialize-Disk -PassThru
+      register: disks
+      when: raw_disk
+
+#New-Partition -DiskNumber 1 -Size 5gb | Set-Partition -NewDriveLetter E
     - name: Create a partition with drive letter E and size 5 GiB
       win_partition:
         drive_letter: E
@@ -31,7 +36,7 @@
         new_label: Formatted
         # full: yes (check for any bad sectors - takes much longer)
         
-#New-Partition -DiskNumber 1 -UseMaximumSize -AssignDriveLetter
+#New-Partition -DiskNumber 1 -UseMaximumSize | Set-Partition -NewDriveLetter F
     - name: Create a partition with drive letter F and size remaining space
       win_partition:
         drive_letter: F
@@ -45,7 +50,7 @@
         new_label: Formatted
         # full: yes (check for any bad sectors - takes much longer)
 
-#New-Partition -DiskNumber 2 -Size 5gb -AssignDriveLetter 
+#New-Partition -DiskNumber 2 -Size 5gb | Set-Partition -NewDriveLetter G
     - name: Create a partition with drive letter G and size 5 GiB
       win_partition:
         drive_letter: G
@@ -59,7 +64,7 @@
         new_label: Formatted
         # full: yes (check for any bad sectors - takes much longer)
 
-#New-Partition -DiskNumber 2 -UseMaximumSize -AssignDriveLetter
+#New-Partition -DiskNumber 2 -UseMaximumSize | Set-Partition -NewDriveLetter H
     - name: Create a partition with drive letter H and size remaining space
       win_partition:
         drive_letter: H
