@@ -1,0 +1,102 @@
+---
+- name: Disk Partition and Format
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - fail:
+        msg: Please run the playbook with a tag [present | absent]
+
+- name: Disk Partition and Format
+  hosts: windows
+  gather_facts: no
+  tags: present
+
+  tasks:
+    - name: Get Disk info
+      win_shell: get-disk | select-object Number,PartitionStyle
+      register: disks
+
+#New-Partition -DiskNumber 1 -Size 5gb -AssignDriveLetter 
+    - name: Create a partition with drive letter E and size 5 GiB
+      win_partition:
+        drive_letter: E
+        partition_size: 5 GiB
+        disk_number: 1
+
+    - name: Format Partition E
+      win_format:
+        drive_letter: E
+        file_system: NTFS
+        new_label: Formatted
+        
+#New-Partition -DiskNumber 1 -UseMaximumSize -AssignDriveLetter
+    - name: Create a partition with drive letter F and size remaining space
+      win_partition:
+        drive_letter: F
+        partition_size: -1
+        disk_number: 1
+
+    - name: Format Partition F
+      win_format:
+        drive_letter: F
+        file_system: NTFS
+        new_label: Formatted
+
+#New-Partition -DiskNumber 2 -Size 5gb -AssignDriveLetter 
+    - name: Create a partition with drive letter G and size 5 GiB
+      win_partition:
+        drive_letter: G
+        partition_size: 5 GiB
+        disk_number: 2
+
+    - name: Format Partition G
+      win_format:
+        drive_letter: F
+        file_system: NTFS
+        new_label: Formatted
+#New-Partition -DiskNumber 2 -UseMaximumSize -AssignDriveLetter
+
+    - name: Create a partition with drive letter H and size remaining space
+      win_partition:
+        drive_letter: H
+        partition_size: -1
+        disk_number: 2
+
+    - name: Format Partition
+      win_format:
+        drive_letter: H
+        file_system: NTFS
+        new_label: Formatted
+
+- name: Disk Partition and Format
+  hosts: windows
+  gather_facts: no
+  tags: absent
+
+  tasks:
+    - name: Wipe Partitions
+      win_partition:
+        disk_number: "{{ item[0] }}"
+        partition_number: "{{ item[1] }}"
+        state: absent
+      with_nested:
+        - [ '1', '2']
+        - [ '2', '3']
+
+
+
+    # - name: Initialize disks
+    #   win_shell: Initialize-Disk -Number "{{ item }}"
+    #   with_items:
+    #     - 1
+    #     - 2
+    #   when: 
+    #     - disks.stdout_lines[4].find('RAW') != -1
+    #     - disks.stdout_lines[5].find('RAW') != -1
+
+    # - name: Get Disk info
+    #   win_shell: Get-Disk | Select-Object Number,PartitionStyle
+    #   register: disks_after
+    # - debug:
+    #     var: disks_after.stdout_lines[3:-1]

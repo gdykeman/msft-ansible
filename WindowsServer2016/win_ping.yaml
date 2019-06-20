@@ -3,6 +3,9 @@
   hosts: windows
   
   tasks:
+    - name: whoami
+      win_whoami:
+        
     - name: Windows Ping Test
       win_ping:
   

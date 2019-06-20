@@ -1,0 +1,48 @@
+---
+- name: Install DHCP on Windows Server
+  hosts: windows
+  gather_facts: no
+  
+  tasks:
+    - name: Install DHCP
+      win_feature:
+        name: DHCP
+        state: present
+      register: output
+      tags: present
+    
+    - name: See if Reboot is required
+      debug:
+        msg: "Reboot Required: {{ output.reboot_required }}"
+      tags: present
+
+    - name: Remove DHCP
+      win_feature:
+        name: DHCP
+        state: absent
+      register: output
+      tags: absent
+
+    - name: See if Reboot is required
+      debug:
+        msg: "Reboot Required: {{ output.reboot_required }}"
+      tags: absent
+
+# #Powershell Equivalent 
+
+# Configuration installDHCP
+# {
+#     Node localhost 
+#     {
+#         WindowsFeature DHCPServer {
+#             Ensure = "Present"
+#             Name = "DHCP"
+#         }
+#     }
+# }
+
+# #Following command generates a MOF file from the above config
+# installDHCP
+
+# #Execute the MOF file
+# Start-DscConfiguration -Wait -Force -Path .\installDHCP -Verbose

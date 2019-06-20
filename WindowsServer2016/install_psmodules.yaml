@@ -1,0 +1,14 @@
+---
+- name: Install DISM on Windows Server
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - name: Import PowershellGet
+      win_shell: Import-Module -Name PowerShellGet -Force
+
+    - name: Add necessary PowerShell Modules
+      win_psmodule:
+        name: dism
+        state: present
+        skip_publisher_check: yes

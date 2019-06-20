@@ -1,0 +1,28 @@
+---
+- name: Build Domain Controller on Windows Server
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - name: Set Package as Trusted
+      win_shell: Get-PackageSource -Name PSGallery | Set-PackageSource -Trusted -Force -ForceBootstrap
+    
+    - name: Install NuGet PackageProvider
+      win_shell: Install-PackageProvider -Name NuGet -Force
+      register: nuget_output
+
+#Problems adding a prerequisite module PowerShellGet A Microsoft-signed module named 'PackageManagement' with version '1.0.0.1' that was previously installed conflicts with the new module 'PackageManagement' from publisher 'CN=Microsoft Root Certificate Authority 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US' with version '1.4.2'. Installing the new module may result in system instability. If you still want to install or update, use -SkipPublisherCheck parameter.
+    - name: Add necessary PowerShell Modules
+      win_psmodule:
+        name: xComputerManagement
+        state: present
+        required_version: "3.2.0.0"
+        skip_publisher_check: yes
+
+    # - name: Add necessary PowerShell Modules
+    #   win_psmodule:
+    #     name: "{{ item.module_name }}"
+    #     state: present
+    #     required_version: "{{ item.required_version }}"
+    #     skip_publisher_check: yes
+    #   loop: "{{ ps_modules }}"
