@@ -1,7 +1,16 @@
 ---
+- name: Ensure tag is specified
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - fail:
+        msg: Please run the playbook with a tag [present | absent]
+
 - name: Install DHCP on Windows Server
   hosts: windows
   gather_facts: no
+  tags: present
   
   tasks:
     - name: Install DHCP
@@ -9,24 +18,25 @@
         name: DHCP
         state: present
       register: output
-      tags: present
-    
+
     - name: See if Reboot is required
       debug:
         msg: "Reboot Required: {{ output.reboot_required }}"
-      tags: present
+
+- name: Remove DHCP on Windows Server
+  hosts: windows
+  gather_facts: no
+  tags: absent
 
     - name: Remove DHCP
       win_feature:
         name: DHCP
         state: absent
       register: output
-      tags: absent
 
     - name: See if Reboot is required
       debug:
         msg: "Reboot Required: {{ output.reboot_required }}"
-      tags: absent
 
 # #Powershell DSC Equivalent 
 
