@@ -28,7 +28,7 @@
         msg: "Reboot Required: {{ output.reboot_required }}"
       tags: absent
 
-# #Powershell Equivalent 
+# #Powershell DSC Equivalent 
 
 # Configuration installDHCP
 # {
