@@ -1,5 +1,5 @@
 ---
-- name: Disk Partition and Format
+- name: Ensure tag is specified
   hosts: windows
   gather_facts: no
 
@@ -23,12 +23,13 @@
         drive_letter: E
         partition_size: 5 GiB
         disk_number: 1
-
+#Format-Volume -DriveLetter E -FileSystem NTFS -Full
     - name: Format Partition E
       win_format:
         drive_letter: E
         file_system: NTFS
         new_label: Formatted
+        # full: yes (check for any bad sectors - takes much longer)
         
 #New-Partition -DiskNumber 1 -UseMaximumSize -AssignDriveLetter
     - name: Create a partition with drive letter F and size remaining space
@@ -36,12 +37,13 @@
         drive_letter: F
         partition_size: -1
         disk_number: 1
-
+#Format-Volume -DriveLetter F -FileSystem NTFS -Full
     - name: Format Partition F
       win_format:
         drive_letter: F
         file_system: NTFS
         new_label: Formatted
+        # full: yes (check for any bad sectors - takes much longer)
 
 #New-Partition -DiskNumber 2 -Size 5gb -AssignDriveLetter 
     - name: Create a partition with drive letter G and size 5 GiB
@@ -49,27 +51,29 @@
         drive_letter: G
         partition_size: 5 GiB
         disk_number: 2
-
+#Format-Volume -DriveLetter G -FileSystem NTFS -Full
     - name: Format Partition G
       win_format:
-        drive_letter: F
+        drive_letter: G
         file_system: NTFS
         new_label: Formatted
-#New-Partition -DiskNumber 2 -UseMaximumSize -AssignDriveLetter
+        # full: yes (check for any bad sectors - takes much longer)
 
+#New-Partition -DiskNumber 2 -UseMaximumSize -AssignDriveLetter
     - name: Create a partition with drive letter H and size remaining space
       win_partition:
         drive_letter: H
         partition_size: -1
         disk_number: 2
-
+#Format-Volume -DriveLetter H -FileSystem NTFS -Full
     - name: Format Partition
       win_format:
         drive_letter: H
         file_system: NTFS
         new_label: Formatted
+        # full: yes (check for any bad sectors - takes much longer)
 
-- name: Disk Partition and Format
+- name: Remove Disk Partitions
   hosts: windows
   gather_facts: no
   tags: absent
