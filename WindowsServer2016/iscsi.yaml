@@ -1,0 +1,44 @@
+---
+- name: Ensure tag is specified
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - fail:
+        msg: Please run the playbook with a tag [present | absent]
+  
+- name: Install iSCSI on Windows Server Target
+  hosts: windows
+  gather_facts: no
+  tags: present
+
+  tasks:
+    - name: Add iscsitarget powershell module
+      win_psmodule:
+        name: iscsitarget
+        state: present   
+
+    - name: Install iSCSI Role
+      win_feature:
+        name: "{{ item }}"
+      loop:
+        - FS-iSCSITarget-Server
+        - FS-FileServer
+
+    - name: Create a partition with drive letter E 9GB in size
+      win_partition:
+        drive_letter: E
+        partition_size: 9 GiB
+        disk_number: 1
+
+    - name: Format Partition E
+      win_format:
+        drive_letter: E
+        file_system: NTFS
+        new_label: Formatted
+
+    - name: Set Path for virtual disk
+      win_shell: New-IscsiVirtualDisk -Path e:\vDisk1.VHDX -Size 5GB
+
+
+    
