@@ -1,0 +1,108 @@
+
+(Get-AzureRmResourceGroup -Name plaz-app1-rg).Tags
+(Get-AzureRmResourceGroup -Name plaz-net-rg).Tags
+
+Tags
+
+(Get-AzureRmResourceGroup -Tag @{ Dept=“IT" }).ResourceGroupName
+
+Set-AzureRmResourceGroup -Name plaz-prod1-rg -Tag @{ Dept="IT"; Owner=“SusanBerlin" }  
+
+Set-AzureRmResourceGroup -Name plaz-dev-rg -Tag @{ Dept=“Research"; Owner=“BradThomas" }
+
+Set-AzureRmResourceGroup -Name plaz-dev-rg -Tag @{ CostCenter=“Research"}
+
+$tags = (Get-AzureRmResourceGroup -Name plaz-dev-rg).Tags
+$tags.Add(“CostCenter", “Research") 
+Set-AzureRmResourceGroup -Tag $tags -Name plaz-dev-rg
+
+$groups = Get-AzureRmResourceGroup
+foreach ($g in $groups)
+{
+    Get-AzureRmResource -ResourceGroupName $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
+}
+
+
+Set-AzureRmResourceGroup -Tag @{} -Name plaz-prod1-rg
+az group show -n plaz-dev-rg --query tags
+
+az group list --tag Dept=IT
+
+az group update -n plaz-app1-rg --set tags.Owner=BradCocco tags.Dept=IT
+
+
+Locks
+New-AzureRmResourceLock -LockName prod1NoDelete -LockLevel CanNotDelete -ResourceGroupName plaz-prod1-rg
+
+Get-AzureRmResourceLock -ResourceGroupName plaz-prod1-rg
+
+$lockId = (Get-AzureRmResourceLock -ResourceGroupName plaz-prod1-rg -ResourceGroupName plaz-prod1-rg).LockId 
+
+Remove-AzureRmResourceLock -LockId $lockId
+
+Remove-azurermresourcelock –lockname readonly –resourcegroupname plaz-prod1-rg
+
+$lockid=(az lock show --name LockSite --resource-group RG01 --output tsv --query id)
+az lock delete --ids $lockid
+
+
+az lock create --name LockGroup --lock-type ReadOnly --resource-group plaz-app1-rg
+
+az lock delete --name LockGroup --resource-group plaz-app1-rg
+
+
+az lock list --resource-group plaz-app1-rg
+
+
+
+IAM
+
+Get-AzureRmRoleDefinition | FT Name, Description
+
+Get-AzureRmRoleDefinition “Reader”
+
+Get-AzureRmRoleAssignment –SignInName jp@imglghotmail.onmicrosoft.com
+
+Get-AzureRmRoleAssignment -ResourceGroupName plaz-net-rg
+
+Get-AzureADGroup -SearchString “Research”
+
+$groupID = 
+
+New-AzureRmRoleAssignment -ObjectId $groupID -RoleDefinitionName “Owner" 
+  -ResourceGroupName “plaz-dev-rg"
+
+New-AzureRmRoleAssignment -ObjectId $groupID `
+  -RoleDefinitionName “Reader" `
+  -ResourceGroupName “plaz-dev-rg"
+
+Get-AzureRmRoleAssignment -ObjectId $groupId -ResourceGroupName “plaz-dev-rg“
+
+az role definition list
+
+az role definition list --name <role_name>
+
+az role assignment list --resource-group plaz-dev-rg
+
+az role assignment create --role Owner --assignee bt@imglghotmail.onmicrosoft.com --resource-group plaz-app1-rg
+
+az role assignment create --role "Virtual Machine Contributor" --assignee-object-id $GroupID --resource-group plaz-app1-rg
+
+az ad group list
+$groupID =
+Policy 
+
+New-AzureRmRoleAssignment -ObjectId $groupID -RoleDefinitionName Owner" -ResourceGroupName “plaz-dev-rg"
+
+az role assignment list --resource-group plaz-dev-rg
+
+az role assignment create --role Owner --assignee bt@imglghotmail.onmicrosoft.com --resource-group plaz-app1-rg
+
+az role assignment delete --role "Virtual Machine Contributor" --assignee-object-id $GroupID --resource-group plaz-app1-rg
+
+$rg = Get-AzureRmResourceGroup -Name 'plaz-prod1-rg'
+$definition = New-AzureRmPolicyDefinition -Name "allowed-locations" -DisplayName "Allowed locations" -description "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements." -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/allowed-locations/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/allowed-locations/azurepolicy.parameters.json' -Mode All
+$definition
+$assignment = New-AzureRMPolicyAssignment -Name "only East US" -Scope $rg.ResourceId  -listOfAllowedLocations "East US" -PolicyDefinition $definition
+$assignment
+

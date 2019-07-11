@@ -7,7 +7,7 @@
     - fail:
         msg: Please run the playbook with a tag [present | absent]
   
-- name: Install iSCSI on Windows Server Target
+- name: Install and configure iSCSI as Windows Server Target
   hosts: windows
   gather_facts: no
   tags: present
@@ -40,5 +40,9 @@
     - name: Set Path for virtual disk
       win_shell: New-IscsiVirtualDisk -Path e:\vDisk1.VHDX -Size 5GB
 
-
+#Can specify IP Address or Iscsi Qualifed Name (IQN)
+    - name: Set Target Name and Initiator IDs
+      win_shell: New-IscsiServerTarget -TargetName Target1 -InitiatorIds IPAddress:192.168.5.100
     
+    - name: VHDX Mapping
+      win_shell: Add-IscsiVirtualDiskTargetMapping -Targetname Target1 -Path e:\vDisk1.VHDX

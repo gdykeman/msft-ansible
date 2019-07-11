@@ -16,10 +16,9 @@
     raw_disk: no
     
   tasks:
-
+#Initialize raw disks if present
     - name: Get Disk info
       win_shell: Get-Disk | Where-Object PartitionStyle -eq 'raw' | Initialize-Disk -PassThru
-      register: disks
       when: raw_disk
 
 #New-Partition -DiskNumber 1 -Size 5gb | Set-Partition -NewDriveLetter E

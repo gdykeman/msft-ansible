@@ -1,0 +1,12 @@
+
+Remove-AzureRmResourceGroup -Name "plaz-go-rg"
+
+template
+https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows
+
+move a resource
+$resource = Get-AzureRmResource -ResourceGroupName plaz-net2-rg -ResourceName VNet1
+Move-AzureRmResource -DestinationResourceGroupName plaz-net-rg -ResourceId $resource.ResourceId
+
+$resource=(az resource show -g plaz-net-rg -n vnet1 --resource-type "Microsoft.Network/virtualNetworks" --query id --output tsv)
+az resource move --destination-group plaz-net2-rg --id $resource

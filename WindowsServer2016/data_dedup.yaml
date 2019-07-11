@@ -1,0 +1,34 @@
+---
+- name: Ensure tag is specified
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - fail:
+        msg: Please run the playbook with a tag [present | absent]
+  
+- name: Enable Data Deduplication on Windows Server
+  hosts: windows
+  gather_facts: no
+  tags: present
+#Chunking optimizes standard file servers by 2:1
+#Chunking optimizes Virtual Hard Disks on HyperV by 20:1
+  tasks:
+    - name: Install the Data Deduplication Roles
+      win_feature:
+        name: "{{ item }}"
+        state: present
+        include_sub_features: yes
+        include_management_tools: yes
+      loop:
+        - FS-Data-Deduplication
+        - FS-File-Server
+
+    - name: Enable Dedup specified volume and select type
+      win_shell: "Enable-DedupVolume -Volume D: -UsageType Default"
+
+    - name: Modify the volume dedup policy
+      win_shell: "Set-DedupVolume -Volume D: -MinimumFileAgeDays 0"
+
+    - name: Manually invoke optimzation for the dedup volume
+      win_shell: "Start-DedupJob �Volume D: -Type Optimization -Memory 50"

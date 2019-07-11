@@ -1,0 +1,3 @@
+---
+dns_domain_name: ansible.com
+domain_admin_user: ansible\Administrator
