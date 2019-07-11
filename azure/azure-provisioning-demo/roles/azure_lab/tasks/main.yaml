@@ -1,5 +1,6 @@
 ---
 - name: Include secrets when VM create
+  include_vars: "{{playbook_dir }}/secrets.yaml"
   when: activity == 'create-vm'
 - name: Run Lab Activity
   include_tasks: "{{ activity }}.yaml"
