@@ -1,0 +1,20 @@
+---
+- name: Remove IIS Role
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - name: Disable IIS
+      win_feature:
+        name: Web-Server
+        state: absent
+        include_sub_features: yes
+        include_management_tools: yes
+      register: iis_output
+    
+    - debug:
+        var: iis_output
+    
+    - name: Reboot if required
+      win_reboot:
+      when: iis_output.reboot_required

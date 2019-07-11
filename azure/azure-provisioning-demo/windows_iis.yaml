@@ -14,3 +14,17 @@
     
     - debug:
         var: iis_output
+
+    - name: Reboot if required
+      win_reboot:
+      when: iis_output.reboot_required
+
+    - name: Copy image file
+      win_copy:
+        src: '{{ web_image }}.png'
+        dest: 'C:\inetpub\wwwroot\{{ web_image }}.png'
+
+    - name: Copy html file
+      win_template:
+        src: 'templates/iis_html.j2'
+        dest: 'C:\inetpub\wwwroot\iisstart.htm'
