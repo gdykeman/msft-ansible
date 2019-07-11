@@ -1,0 +1,16 @@
+---
+- name: Configure IIS
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - name: Enable IIS
+      win_feature:
+        name: Web-Server
+        state: present
+        include_sub_features: yes
+        include_management_tools: yes
+      register: iis_output
+    
+    - debug:
+        var: iis_output

@@ -1,0 +1,17 @@
+---
+- name: Test Azure Connectivity
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+
+    - name: Gather Facts for Azure RG
+      azure_rm_resourcegroup_facts:
+        name: gd-dev-rg
+      register: collected_data
+      delegate_to: localhost
+
+    - name: Display Collected Data
+      debug:
+        msg: "{{ collected_data }}"
+
