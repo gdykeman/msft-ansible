@@ -3,3 +3,5 @@ publisher: MicrosoftWindowsServer
 sku: 2016-Datacenter
 version: latest
 os_type: Windows
+tag: 
+  os: windows

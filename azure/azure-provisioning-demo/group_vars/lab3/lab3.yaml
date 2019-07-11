@@ -3,3 +3,5 @@ publisher: OpenLogic
 sku: '7.5'
 version: latest
 os_type: Linux
+tag: 
+  os: linux
