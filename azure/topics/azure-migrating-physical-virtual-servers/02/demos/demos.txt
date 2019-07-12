@@ -1,0 +1,57 @@
+Module 1: Evaluating the Migration Environment
+
+Microsoft Azure
+https://azure.microsoft.com/en-us/
+
+Azure Documentation
+https://docs.microsoft.com/en-us/azure/
+
+Azure Architecture Center
+https://docs.microsoft.com/en-us/azure/architecture/
+
+Azure Subscription and Service Limits
+https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits
+
+Azure Site Recovery (ASR) Documentation
+https://docs.microsoft.com/en-us/azure/site-recovery/
+
+VM Migration to Microsoft Azure
+https://www.opslogix.com/21346-2/
+
+Upload VHDs to an Azure Storage Account
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/prepare-for-upload-vhd-image
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/upload-generalized-managed
+
+Azure Data Box
+https://azure.microsoft.com/en-us/services/storage/databox/
+
+Hyper-V replication to a secondary site
+https://docs.microsoft.com/en-us/azure/site-recovery/hyper-v-vmm-architecture
+
+Azure Migrate
+https://docs.microsoft.com/en-us/azure/migrate/migrate-overview
+
+Import an OVA image in VMware
+https://pubs.vmware.com/fusion-5/index.jsp?topic=%2Fcom.vmware.fusion.help.doc%2FGUID-275EF202-CF74-43BF-A9E9-351488E16030.html
+
+Collector Appliance
+https://docs.microsoft.com/en-us/azure/migrate/concepts-collector
+
+Deploy a Configuration Server
+https://docs.microsoft.com/en-us/azure/site-recovery/vmware-azure-deploy-configuration-server
+
+Azure Site Recovery Deployment Planner for Hyper-V to Azure
+https://docs.microsoft.com/en-us/azure/site-recovery/hyper-v-deployment-planner-overview
+
+Azure Site Recovery Deployment Planner for VMware to Azure
+https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-deployment-planner
+
+Data Migration Assistant (DMA)
+https://docs.microsoft.com/en-us/sql/dma/dma-overview?view=sql-server-2017
+
+Azure SQL Database FAQ
+https://docs.microsoft.com/en-us/azure/sql-database/sql-database-faq
+
+Visual Studio Code
+https://code.visualstudio.com/
+https://code.visualstudio.com/docs

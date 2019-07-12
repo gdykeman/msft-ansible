@@ -1,0 +1,39 @@
+Module 2: Migrating VMs to Microsoft Azure with Azure Site Recovery
+
+Microsoft Azure
+https://azure.microsoft.com/en-us/
+
+Azure Documentation
+https://docs.microsoft.com/en-us/azure/
+
+Azure Architecture Center
+https://docs.microsoft.com/en-us/azure/architecture/
+
+Azure Subscription and Service Limits
+https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits
+
+Microsoft Azure Site Recovery (ASR) Documentation
+https://docs.microsoft.com/en-us/azure/site-recovery/
+
+Hyper-V to Azure replication architecture
+https://docs.microsoft.com/en-us/azure/site-recovery/hyper-v-azure-architecture
+
+Hyper-V Migration to ASR
+
+Support matrix for Hyper-V replication to Azure
+https://docs.microsoft.com/en-us/azure/site-recovery/hyper-v-azure-support-matrix
+
+Set up disaster recovery of on-premises Hyper-V VMs to Azure
+https://docs.microsoft.com/en-us/azure/site-recovery/hyper-v-azure-tutorial
+
+Add Azure Automation runbooks to recovery plans
+https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-runbook-automation
+
+Failover in Site Recovery
+https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-failover
+
+Azure Virtual Machine Agent overview
+https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows
+
+ExpressRoute circuits and routing domains
+https://docs.microsoft.com/en-us/azure/expressroute/expressroute-circuit-peerings

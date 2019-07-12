@@ -1,0 +1,43 @@
+Module 3: Migrating Physical Servers and Databases to Microsoft Azure
+
+Microsoft Azure
+https://azure.microsoft.com/en-us/
+
+Azure Documentation
+https://docs.microsoft.com/en-us/azure/
+
+Azure Architecture Center
+https://docs.microsoft.com/en-us/azure/architecture/
+
+Azure Subscription and Service Limits
+https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits
+
+Microsoft Azure Site Recovery Documentation
+https://docs.microsoft.com/en-us/azure/site-recovery/
+
+Site Recovery pricing
+https://azure.microsoft.com/en-us/pricing/details/site-recovery/
+
+What workloads can you protect with Azure Site Recovery?
+https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-workload
+
+Physical server to Azure replication architecture
+https://docs.microsoft.com/en-us/azure/site-recovery/physical-azure-architecture
+
+Microsoft acquires InMage: Better business continuity with Azure
+https://blogs.microsoft.com/blog/2014/07/11/microsoft-acquires-inmage-better-business-continuity-with-azure/
+
+SQL Server database migration to Azure SQL Database
+https://docs.microsoft.com/en-us/azure/sql-database/sql-database-cloud-migrate
+
+Migrate your SQL Server database to Azure SQL Database using DMA
+https://docs.microsoft.com/en-us/azure/sql-database/sql-database-migrate-your-sql-server-database
+
+Migrate SQL Server to Azure SQL Database using DMS
+https://docs.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-azure-sql
+
+Azure SQL Database DTU Calculator
+https://dtucalculator.azurewebsites.net/
+
+Azure SQL Database and SQL Data Warehouse firewall rules
+https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure
