@@ -5,3 +5,4 @@ version: latest
 os_type: Windows
 tag: 
   os: windows
+vm_size: Standard_DS3_v2
