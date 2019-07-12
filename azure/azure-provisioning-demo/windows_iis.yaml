@@ -6,7 +6,7 @@
   tasks:
     - name: Win Ping
       win_ping:
-      
+
     - name: Enable IIS
       win_feature:
         name: Web-Server
@@ -31,6 +31,9 @@
       win_copy:
         src: files/html/
         dest: 'C:\inetpub\wwwroot\'
+    
+    - debug:
+        var: ansible_host
     # - name: Copy image file
     #   win_copy:
     #     src: '{{ web_image }}.png'
