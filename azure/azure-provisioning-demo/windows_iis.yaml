@@ -22,7 +22,7 @@
       win_reboot:
       when: iis_output.reboot_required
 
-    - name: Copy image file
+    - name: Clear default Website directory
       win_file:
         path: 'C:\inetpub\wwwroot'
         state: absent
