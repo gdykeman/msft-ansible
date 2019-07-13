@@ -1,6 +1,6 @@
 ---
 - name: Remove IIS Role
-  hosts: windows
+  hosts: all
   gather_facts: no
 
   tasks:

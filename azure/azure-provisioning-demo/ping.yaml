@@ -1,6 +1,6 @@
 ---
 - name: Test Connectivity to Windows Hosts
-  hosts: windows
+  hosts: all
   
   tasks:
     - name: whoami
