@@ -29,7 +29,7 @@
   
     - name: Copy image file
       win_copy:
-        src: files/html/
+        src: files/iis/
         dest: 'C:\inetpub\wwwroot\'
     
     - debug:
