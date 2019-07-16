@@ -1,0 +1,34 @@
+Module 3: Deploying a Windows Server Virtual Machine in Microsoft Azure
+
+Microsoft Azure
+https://azure.microsoft.com/en-us/
+
+Azure Documentation
+https://docs.microsoft.com/en-us/azure/
+
+Azure Architecture Center
+https://docs.microsoft.com/en-us/azure/architecture/
+
+Azure Subscription and Service Limits
+https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits
+
+Windows Virtual Machines Overview | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/overview
+
+FAQ about Windows VMs in Azure | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq
+
+Connect to a Windows Server VM | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/connect-logon
+
+Just in time virtual machine access in Azure Security Center | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time
+
+Set up WinRM access for an Azure VM | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/winrm
+
+Cannot connect with RDP to a Windows VM in Azure | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/troubleshoot-rdp-connection
+
+Azure Virtual Machine Serial Console | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/serial-console

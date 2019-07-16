@@ -1,0 +1,49 @@
+Module 1: Planning Virtual Machine Deployment
+
+Microsoft Azure
+https://azure.microsoft.com/en-us/
+
+Azure Documentation
+https://docs.microsoft.com/en-us/azure/
+
+Azure Architecture Center
+https://docs.microsoft.com/en-us/azure/architecture/
+
+Azure Subscription and Service Limits
+https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits
+
+Overview of the Azure Compute Unit | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/acu
+
+Windows VM sizes in Azure | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes
+
+Azure Windows VM sizes - General purpose | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-general
+
+Linux VM sizes in Azure | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes
+
+Azure VMchooser
+https://azurevmchooser.kvaes.be/
+
+High-performance Premium Storage and Azure managed disks for Windows VMs | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/premium-storage
+
+Azure Premium and Standard Managed Disks Overview for Windows VMs | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview
+
+Azure networking | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/networking/networking-overview
+
+Azure resource providers and resource types | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services
+
+Tutorial - High availability for Windows VMs in Azure | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-availability-sets
+
+Manage the availability of Windows VMs in Azure | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability
+
+What are Azure Availability Zones? | Microsoft Docs
+https://docs.microsoft.com/en-us/azure/availability-zones/az-overview
