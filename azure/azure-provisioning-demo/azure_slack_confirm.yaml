@@ -1,0 +1,21 @@
+---
+- name: AWS Slack Confirm
+  hosts: localhost
+  connection: network_cli
+  gather_facts: no
+  
+  tasks:
+    - name: Generate slack response
+      template:
+        src: azure_slack.j2
+        dest: files/azure_response.json
+
+    - name: Send Slack confirmation
+      uri:
+        url: "{{response_url}}"
+        body: "{{lookup('file', 'files/azure_response.json')}}"
+        body_format: json
+        method: POST
+        validate_certs: no
+      delegate_to: localhost
+      run_once: yes
