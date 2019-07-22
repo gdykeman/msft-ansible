@@ -27,7 +27,7 @@
         path: 'C:\inetpub\wwwroot'
         state: absent
   
-    - name: Copy image file
+    - name: Copy over web files
       win_copy:
         src: files/iis/
         dest: 'C:\inetpub\wwwroot\'
