@@ -2,7 +2,7 @@
 - name: Test Azure Connectivity
   hosts: localhost
   gather_facts: no
-
+  #test 2
   tasks:
 
     - name: Gather Facts for Azure RG
